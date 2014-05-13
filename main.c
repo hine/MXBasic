@@ -1,17 +1,8 @@
 /******************************************************************************
-
-    main.c
-
-    Test demo program for multiple HID devices.
-
-    Test hardware is SBDBT32 board, it has PIC32MX695F512H.
-
-    (C) S.Suwa 2013/11/22       http://www.suwa-koubou.jp
-
-    2013/11/22 support multiple HID device.
-               mouse, keyboard, joystick
-
-******************************************************************************/
+ *
+ * SONO-BASIC by Daisuke IMAI <hine.gdw@gmail.com>
+ *
+ ******************************************************************************/
 
 #include <stdio.h>
 #include <string.h>
@@ -25,7 +16,8 @@
 #include "display.h"
 #include "character.h"
 #include "ttbasic.h"
-#include "uart2.h"
+//#include "uart2.h"
+#include "sound.h"
 
 
 /*------------------------------------------------------------------------------
@@ -38,13 +30,6 @@
 /*------------------------------------------------------------------------------
 	definition
 ------------------------------------------------------------------------------*/
-
-//#define	putstr(x)	UART2PrintString(x)
-#define	inkey()		UART2IsPressed()
-//#define	getch()		UART2GetChar()
-//#define	puthex(x)	UART2PutHex(x)
-//#define	putch(x)	UART2PutChar(x)
-//#define	putdec(x)	UART2PutDec(x)
 
 
 /*------------------------------------------------------------------------------
@@ -202,6 +187,7 @@ int main ( void )
 
     timer_init();
     display_init();
+    sound_init();
 
     putstr("SBDBT32 system\r\n\r\n");
 
@@ -212,12 +198,11 @@ int main ( void )
         while(1) {
             USBTasks();
             if(getHIDnumOfDevice(HID_KEYBOARD)>0){
-                // keyboard_test();
+                //sound_start(10249, 1000);
                 basic();
             }
         }
     }else{
-        keyboard_test();
         basic();
     }
 

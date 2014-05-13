@@ -23,6 +23,8 @@ volatile int    CursorBlink;        // 500msec toggle, 1Hz blink
 volatile int    KeyPolling;         // USB keyboard read interval 
 volatile unsigned short ClockCount; // 1sec interval countdown timer
 volatile int    tempo_strobe;       // 5msec toggle, 100Hz music tempo
+extern unsigned int soundcount;
+extern volatile int soundon;
 
 
 /*----------------------------------------------------------------------
@@ -73,9 +75,11 @@ void __attribute__ (( interrupt(ipl2), vector(_TIMER_1_VECTOR) )) _T1Interrupt(v
     }
 
     // *** toggle interval timer *************
-    // update 100HZ music tempo timer  
-    if(!(timer_tick % 5)) tempo_strobe ^=1;
-
+    if(soundon == 1){
+        soundcount--;
+        if(soundcount <= 0) sound_stop();
+    }
+ 
     // update 2Hz cursor blink timer
     if(!(timer_tick % 500)) CursorBlink ^= 1;
 
@@ -98,6 +102,16 @@ void __attribute__ (( interrupt(ipl2), vector(_TIMER_1_VECTOR) )) _T1Interrupt(v
     // clear interrupt flag
     clear_timer();
 
+}
+
+/*---------------------------------------------------------------------------------------------
+	generate music frequency by T3 interrupt
+---------------------------------------------------------------------------------------------*/
+
+void __attribute__ (( interrupt(ipl2), vector(_TIMER_3_VECTOR) )) _T3Interrupt(void)
+{
+	IFS0CLR=_IFS0_T3IF_MASK;
+	LATBINV = 0x0200;	// toggle RB9
 }
 
 /*-----------------------------------------------------------

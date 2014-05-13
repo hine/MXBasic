@@ -17,5 +17,5 @@ timer.h  \
 display.h  \
  character.h  \
 ttbasic.h  \
-uart2.h  \
+sound.h  \
 p32mx695f_config.h 

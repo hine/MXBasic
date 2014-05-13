@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c uart2.c uart2to1.c usb_config.c usb_host.c usb_host_hid.c usb_host_hid_device.c usb_host_hid_parser.c timer.c display.c character.c graphic.c ttbasic.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c uart2.c uart2to1.c usb_config.c usb_host.c usb_host_hid.c usb_host_hid_device.c usb_host_hid_parser.c timer.c display.c character.c graphic.c ttbasic.c sound.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/uart2.o ${OBJECTDIR}/uart2to1.o ${OBJECTDIR}/usb_config.o ${OBJECTDIR}/usb_host.o ${OBJECTDIR}/usb_host_hid.o ${OBJECTDIR}/usb_host_hid_device.o ${OBJECTDIR}/usb_host_hid_parser.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/display.o ${OBJECTDIR}/character.o ${OBJECTDIR}/graphic.o ${OBJECTDIR}/ttbasic.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/uart2.o.d ${OBJECTDIR}/uart2to1.o.d ${OBJECTDIR}/usb_config.o.d ${OBJECTDIR}/usb_host.o.d ${OBJECTDIR}/usb_host_hid.o.d ${OBJECTDIR}/usb_host_hid_device.o.d ${OBJECTDIR}/usb_host_hid_parser.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/display.o.d ${OBJECTDIR}/character.o.d ${OBJECTDIR}/graphic.o.d ${OBJECTDIR}/ttbasic.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/uart2.o ${OBJECTDIR}/uart2to1.o ${OBJECTDIR}/usb_config.o ${OBJECTDIR}/usb_host.o ${OBJECTDIR}/usb_host_hid.o ${OBJECTDIR}/usb_host_hid_device.o ${OBJECTDIR}/usb_host_hid_parser.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/display.o ${OBJECTDIR}/character.o ${OBJECTDIR}/graphic.o ${OBJECTDIR}/ttbasic.o ${OBJECTDIR}/sound.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/uart2.o.d ${OBJECTDIR}/uart2to1.o.d ${OBJECTDIR}/usb_config.o.d ${OBJECTDIR}/usb_host.o.d ${OBJECTDIR}/usb_host_hid.o.d ${OBJECTDIR}/usb_host_hid_device.o.d ${OBJECTDIR}/usb_host_hid_parser.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/display.o.d ${OBJECTDIR}/character.o.d ${OBJECTDIR}/graphic.o.d ${OBJECTDIR}/ttbasic.o.d ${OBJECTDIR}/sound.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/uart2.o ${OBJECTDIR}/uart2to1.o ${OBJECTDIR}/usb_config.o ${OBJECTDIR}/usb_host.o ${OBJECTDIR}/usb_host_hid.o ${OBJECTDIR}/usb_host_hid_device.o ${OBJECTDIR}/usb_host_hid_parser.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/display.o ${OBJECTDIR}/character.o ${OBJECTDIR}/graphic.o ${OBJECTDIR}/ttbasic.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/uart2.o ${OBJECTDIR}/uart2to1.o ${OBJECTDIR}/usb_config.o ${OBJECTDIR}/usb_host.o ${OBJECTDIR}/usb_host_hid.o ${OBJECTDIR}/usb_host_hid_device.o ${OBJECTDIR}/usb_host_hid_parser.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/display.o ${OBJECTDIR}/character.o ${OBJECTDIR}/graphic.o ${OBJECTDIR}/ttbasic.o ${OBJECTDIR}/sound.o
 
 # Source Files
-SOURCEFILES=main.c uart2.c uart2to1.c usb_config.c usb_host.c usb_host_hid.c usb_host_hid_device.c usb_host_hid_parser.c timer.c display.c character.c graphic.c ttbasic.c
+SOURCEFILES=main.c uart2.c uart2to1.c usb_config.c usb_host.c usb_host_hid.c usb_host_hid_device.c usb_host_hid_parser.c timer.c display.c character.c graphic.c ttbasic.c sound.c
 
 
 CFLAGS=
@@ -169,6 +169,12 @@ ${OBJECTDIR}/ttbasic.o: ttbasic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ttbasic.o 
 	@${FIXDEPS} "${OBJECTDIR}/ttbasic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ttbasic.o.d" -o ${OBJECTDIR}/ttbasic.o ttbasic.c   
 	
+${OBJECTDIR}/sound.o: sound.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/sound.o.d 
+	@${RM} ${OBJECTDIR}/sound.o 
+	@${FIXDEPS} "${OBJECTDIR}/sound.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sound.o.d" -o ${OBJECTDIR}/sound.o sound.c   
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -247,6 +253,12 @@ ${OBJECTDIR}/ttbasic.o: ttbasic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ttbasic.o.d 
 	@${RM} ${OBJECTDIR}/ttbasic.o 
 	@${FIXDEPS} "${OBJECTDIR}/ttbasic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ttbasic.o.d" -o ${OBJECTDIR}/ttbasic.o ttbasic.c   
+	
+${OBJECTDIR}/sound.o: sound.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/sound.o.d 
+	@${RM} ${OBJECTDIR}/sound.o 
+	@${FIXDEPS} "${OBJECTDIR}/sound.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sound.o.d" -o ${OBJECTDIR}/sound.o sound.c   
 	
 endif
 

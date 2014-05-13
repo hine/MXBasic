@@ -1,9 +1,19 @@
 #include <stdio.h>
+#include <string.h>
 #include "display.h"
 #include "graphic.h"
 
 extern unsigned int CRAM[CRAM_SIZE];       // キャラクターRAM
 extern volatile unsigned int Curx, Cury;   // CRAM関連ポインタ(カーソル位置)
+
+void CClear(void);
+void CClearLine (int cy);
+void putch(int a);
+void crammove(int num);
+void putstr(const unsigned char *s);
+void puthex(int a);
+void putdec(int a);
+void putcrlf(void);
 
 /***********************************
 *  キャラクターRAMをクリア
@@ -42,9 +52,9 @@ void putch(int a)
         CClearLine(Cury);
     }
     if (Cury >= V_RES/8) { // 下端折り返し
-        Cury = 0;
-        //memmove(CRAM, CRAM+(H_RES/8), CRAM_SIZE-(H_RES/8));
-        //Cury--;
+        //Cury = 0;
+        crammove(H_RES/8);
+        Cury--;
         CClearLine(Cury);
     }
     if (a == 8) {
@@ -57,9 +67,9 @@ void putch(int a)
     if (a == 10) {
         Cury++;
         if (Cury >= V_RES/8) { // 下端折り返し
-            Cury = 0;
-            //memmove(CRAM, CRAM+(H_RES/8), CRAM_SIZE-(H_RES/8));
-            //Cury--;
+            //Cury = 0;
+            crammove(H_RES/8);
+            Cury--;
         }
         CClearLine(Cury);
         return;
@@ -70,6 +80,15 @@ void putch(int a)
     }
     CRAM[Cury*H_RES/8+Curx] = a;
     Curx++; // カーソル位置更新
+}
+
+void crammove(int num)
+{
+    unsigned int i;
+    for (i=0;i<CRAM_SIZE-num;i++) {
+        CRAM[i] = CRAM[i+num];
+    }
+    return;
 }
 
 /******************************
@@ -99,4 +118,3 @@ void putcrlf(void)
 {
     putstr("\r\n");
 }
-
