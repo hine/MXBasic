@@ -1193,8 +1193,8 @@ void basic(){
 
 	inew();
         newline();
-	c_puts("TOYOSHIKI TINY BASIC"); newline();
-	c_puts("PIC24F EDITION"); newline();
+	c_puts("SONO-BASIC ver.0.1"); newline();
+	c_puts("on SBDBT32(PIC32MX) system"); newline();
 	error(); // Print OK, and Clear error flag
 
 	// Input 1 line and execute
