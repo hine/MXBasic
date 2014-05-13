@@ -1,0 +1,21 @@
+build/default/production/main.o:  \
+main.c  \
+GenericTypeDefs.h  \
+ HardwareProfile.h  \
+usb.h  \
+Compiler.h  \
+usb_config.h  \
+usb_common.h  \
+usb_ch9.h  \
+ usb_host.h  \
+usb_hal.h  \
+usb_hal_pic32.h  \
+usb_host_hid.h  \
+ usb_host_hid_parser.h  \
+usb_host_hid_device.h  \
+timer.h  \
+display.h  \
+ character.h  \
+ttbasic.h  \
+uart2.h  \
+p32mx695f_config.h 
