@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * SONO-BASIC by Daisuke IMAI <hine.gdw@gmail.com>
+ * SONO-System by Daisuke IMAI <hine.gdw@gmail.com>
  *
  ******************************************************************************/
 
@@ -38,7 +38,6 @@
 
 void	InitializeSystem (void);
 int     main (void);
-void    keyboard_test(void);
 BYTE    toAscii(USB_KEYBOARD_DATA *data);
 
 /*------------------------------------------------------------------------------
@@ -189,7 +188,7 @@ int main ( void )
     display_init();
     sound_init();
 
-    putstr("SBDBT32 system\r\n\r\n");
+    putstr("SONO-SYSTEM on SBDBT32(PIC32MX)\r\n\r\n");
 
     USBTasks();
 
@@ -198,7 +197,7 @@ int main ( void )
         while(1) {
             USBTasks();
             if(getHIDnumOfDevice(HID_KEYBOARD)>0){
-                //sound_start(10249, 1000);
+                sound_start(13681, 500);
                 basic();
             }
         }
@@ -207,47 +206,6 @@ int main ( void )
     }
 
     return 0;
-}
-
-
-/*===============================================================================
-	keyboard test (added this test function, 2013/11/13)
-===============================================================================*/
-
-void	keyboard_test(void)
-{
-	USB_KEYBOARD_DATA   keyd;
-	int rc;
-	BYTE c, prev;
-
-
-	putstr("\r\n*** Start USB keyboard test. \r\n");
-	putstr("Please press a key of USB keyboard.\r\n");
-	putstr(" If you press Ctrl+C, to stop the keyboard test.\r\n"); 
-
-	for(c = prev = 0;;){
-
-		do {
-			rc = keyboard_read(1, &keyd);
-			if(rc == -1){
-				putstr("\r\nKeyboard detached. Stop the keyboard test! \r\n");
-				return;
-			}
-		}while(rc == 0);
-
-		if((keyd.modifier.left_ctrl || keyd.modifier.right_ctrl) &&
-			keyd.keycode[0] == 0x06){
-				putstr("\r\nYou pressed Ctrl+C, to stop the keyborad test! \r\n");
-				return;
-		}
-
-		c = toAscii(&keyd);
-		if(c && c != prev) putch(c);
-		if(c == '\r') putch('\n');
-		prev = c;
-
-	}
-
 }
 
 BYTE	getch(void)

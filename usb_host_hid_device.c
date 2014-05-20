@@ -1,4 +1,4 @@
-/******************************************************************************
+/*******************************************************************************
 
 	usb_host_hid_device.c
 
@@ -23,14 +23,6 @@
 #include "usb_host_hid_device.h"
 
 //#define	DEBUG_MODE
-
-//#define	putstr(x)	UART2PrintString(x)
-#define	inkey()		UART2IsPressed()
-#define	getch()		UART2GetChar()
-//#define	puthex(x)	UART2PutHex(x)
-//#define	putch(x)	UART2PutChar(x)
-//#define putdec(x)   UART2PutDec(x)
-//#define putcrlf()   UART2PrintString("\r\n")
 
 
 // *** structures **************************************************************
@@ -65,7 +57,7 @@ typedef struct _HID_LED_REPORT_BUFFER // keyboard only
 }   HID_LED_REPORT_BUFFER;
 
 
-// *** Macros ****************************************************************************
+// *** Macros ******************************************************************
 // item of report descripter
 #define MINIMUM_POLL_INTERVAL           (0x0A)        // Minimum Polling rate for HID reports is 10ms
 #define USAGE_PAGE_GEN_DESKTOP          (0x01)
@@ -104,7 +96,8 @@ typedef struct _HID_LED_REPORT_BUFFER // keyboard only
     #define USB_FREE_AND_CLEAR(ptr) {USB_FREE(ptr); ptr = NULL;}
 #endif
 
-// *** Global Function Prototypes ********************************************************
+
+// *** Global Function Prototypes **********************************************
 int mouse_read(int num, USB_MOUSE_DATA *data);
 int keyboard_read(int num, USB_KEYBOARD_DATA *data);
 int joystick_read(int num, USB_JOYSTICK_DATA *data);
@@ -128,15 +121,15 @@ static BOOL USB_HID_KEYBOARD_DataCollectionHandler(BYTE deviceAddress);
 static BOOL USB_HID_JOYSTICK_DataCollectionHandler(BYTE deviceAddress);
 
 
-// ******************************************************************************************
-// ******************************************************************************************
+// *****************************************************************************
+// *****************************************************************************
 // Section: Global Variables
-// ******************************************************************************************
-// ******************************************************************************************
+// *****************************************************************************
+// *****************************************************************************
 
 // HID device name
 static char *deviceName[HID_MAX_DEVICETYPE] = {
-	"unknown", "mouse", "joystick",
+    "unknown", "mouse", "joystick",
     "gamepad", "keyboard", "keypad",
 };
 
