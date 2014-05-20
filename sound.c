@@ -5,7 +5,7 @@
 unsigned short sounddata[]={27363,25828,24378,23010,21718,20499,19349,18263,17238,16270,15357,14495,
     13681,12914,12189,11505,10859,10249,9674,9131,8619,8135,7678,7247,6840};
 unsigned int soundcount;
-volatile int soundon;
+volatile unsigned int soundon;
 
 void sound_init()
 {
@@ -27,7 +27,7 @@ void sound_start(short data, int length)
     PR3 = data;
     soundcount = length; //msec
     soundon = 1;
-    putstr("sound on(");putdec(data);putstr(")\r\n");
+    // putstr("sound on(");putdec(data);putstr(")\r\n");
     IFS0CLR = _IFS0_T3IF_MASK;
     IEC0SET = _IEC0_T3IE_MASK; // enable interrupt
 }
@@ -35,7 +35,7 @@ void sound_start(short data, int length)
 void sound_stop()
 {
     soundon = 0;
-    putstr("sound off\r\n");
+    //putstr("sound off\r\n");
     IFS0CLR = _IFS0_T3IF_MASK;
     IEC0CLR = _IEC0_T3IE_MASK; // disable interrupt
     LATBCLR=0x0200;  // RB9 to low

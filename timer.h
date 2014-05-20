@@ -21,7 +21,7 @@ extern	volatile DWORD RefreshTime;   // in timer.c
 //extern  void     key_scan(void);		  // in key.c
 extern	volatile int CursorBlink;	  // in rtc.c
 extern	volatile int KeyPolling;  // control USB keybord read interval 
-extern	volatile unsigned short ClockCount; // 1sec interval countdown timer
-extern	volatile int tempo_strobe;	// 100Hz music tempo
+//extern	volatile unsigned short ClockCount; // 1sec interval countdown timer
+//extern	volatile int tempo_strobe;	// 100Hz music tempo
 
 #endif
