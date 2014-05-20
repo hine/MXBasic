@@ -29,8 +29,8 @@
       <itemPath>graphic.h</itemPath>
       <itemPath>ttbasic.h</itemPath>
       <itemPath>sound.h</itemPath>
-      <itemPath>key.h</itemPath>
       <itemPath>struct_queue.h</itemPath>
+      <itemPath>keyboard.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -52,7 +52,7 @@
       <itemPath>graphic.c</itemPath>
       <itemPath>ttbasic.c</itemPath>
       <itemPath>sound.c</itemPath>
-      <itemPath>key.c</itemPath>
+      <itemPath>keyboard.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

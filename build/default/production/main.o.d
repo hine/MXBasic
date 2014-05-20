@@ -14,6 +14,7 @@ usb_host_hid.h  \
  usb_host_hid_parser.h  \
 usb_host_hid_device.h  \
 timer.h  \
+keyboard.h  \
 display.h  \
  character.h  \
 ttbasic.h  \
