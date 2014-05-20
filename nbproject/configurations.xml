@@ -15,7 +15,6 @@
       <itemPath>usb_config.h</itemPath>
       <itemPath>usb_hal.h</itemPath>
       <itemPath>usb_hal_local.h</itemPath>
-      <itemPath>usb_hal_pic24.h</itemPath>
       <itemPath>usb_hal_pic32.h</itemPath>
       <itemPath>usb_host.h</itemPath>
       <itemPath>usb_host_hid.h</itemPath>
@@ -31,6 +30,7 @@
       <itemPath>ttbasic.h</itemPath>
       <itemPath>sound.h</itemPath>
       <itemPath>key.h</itemPath>
+      <itemPath>struct_queue.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

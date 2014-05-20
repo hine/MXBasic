@@ -130,48 +130,6 @@ void InitializeSystem ( void )
 } // InitializeSystem
 
 
-/*============================================================================================
-	BOOL USB_ApplicationEventHandler ( BYTE address, USB_EVENT event, void *data, DWORD size )
-============================================================================================*/
-
-BOOL USB_ApplicationEventHandler ( BYTE address, USB_EVENT event, void *data, DWORD size )
-{
-    //putstr("EVENT:"); putdec(event); putstr("\r\n");
-
-    // Handle specific events.
-    switch (event){
-
-    case EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION:
-        return FALSE;
- 
-    case EVENT_VBUS_RELEASE_POWER:
-    case EVENT_VBUS_REQUEST_POWER:
-    case EVENT_UNSUPPORTED_DEVICE:
-    case EVENT_CANNOT_ENUMERATE:
-    case EVENT_CLIENT_INIT_ERROR:
-    case EVENT_OUT_OF_MEMORY:
-    case EVENT_UNSPECIFIED_ERROR:
-        break;
-
-    default:
-       break;
-   }
-
-   return TRUE;
-
-} // USB_ApplicationEventHandler
-
-
-/*-------------------------------------------------------------------------------
-	BOOL USB_ApplicationDataEventHandler ( BYTE address, USB_EVENT event, void *data, DWORD size )
--------------------------------------------------------------------------------*/
-
-BOOL USB_ApplicationDataEventHandler ( BYTE address, USB_EVENT event, void *data, DWORD size )
-{
-	return TRUE;
-}
-
-
 /*==============================================================================
 	main
 ===============================================================================*/
