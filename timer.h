@@ -1,5 +1,5 @@
 /***********************************************************************
-	timeer module
+	timer module
 ***********************************************************************/
 
 #ifndef _TIMER_H
@@ -11,7 +11,7 @@
 #define unlock_timer()	IEC0SET=_IEC0_T1IE_MASK
 #define	clear_timer()	IFS0CLR=_IFS0_T1IF_MASK
 
-// in rtc.c 
+// in timer.c
 void	timer_init(void);
 void    delay_ms(int t);
 

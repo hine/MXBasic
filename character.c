@@ -3,8 +3,16 @@
 #include "display.h"
 #include "graphic.h"
 
-extern unsigned int CRAM[CRAM_SIZE];       // キャラクターRAM
-extern volatile unsigned int Curx, Cury;   // CRAM関連ポインタ(カーソル位置)
+
+/*------------------------------------------------------------------------------
+	definition
+------------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------------
+	function prototype
+------------------------------------------------------------------------------*/
 
 void CClear(void);
 void CClearLine (int cy);
@@ -14,6 +22,16 @@ void putstr(const unsigned char *s);
 void puthex(int a);
 void putdec(int a);
 void putcrlf(void);
+
+
+/*------------------------------------------------------------------------------
+	global variable
+------------------------------------------------------------------------------*/
+
+extern unsigned int CRAM[CRAM_SIZE];       // キャラクターRAM
+extern volatile unsigned int Curx, Cury;   // CRAM関連ポインタ(カーソル位置)
+
+
 
 /***********************************
 *  キャラクターRAMをクリア
