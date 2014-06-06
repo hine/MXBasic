@@ -17,7 +17,7 @@
 	function prototype
 ------------------------------------------------------------------------------*/
 
-BYTE    toAscii(USB_KEYBOARD_DATA *data);
+BYTE toAscii(USB_KEYBOARD_DATA *data);
 
 
 /*------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ const BYTE tblAsciiWithShift[]={
 };
 
 
-BYTE	getch(void)
+BYTE getch(void)
 {
     USB_KEYBOARD_DATA   keyd;
     int rc;
@@ -65,7 +65,7 @@ BYTE	getch(void)
     return c;
 }
 
-BYTE	kbhit(void)
+BYTE kbhit(void)
 {
     USB_KEYBOARD_DATA   keyd;
     int rc;
@@ -91,17 +91,14 @@ BYTE	kbhit(void)
 
 BYTE toAscii(USB_KEYBOARD_DATA *data)
 {
-	if(data->keycode[0] == 0x87 || data->keycode[0] == 0x89)data->keycode[0] -= 0x20;
+    if(data->keycode[0] == 0x87 || data->keycode[0] == 0x89)data->keycode[0] -= 0x20;
+    if(data->keycode[0] >= 0x70) return 0;
 
-	if(data->keycode[0] >= 0x70) return 0;
-
-	if(data->modifier.left_shift || data->modifier.right_shift){
-		return tblAsciiWithShift[data->keycode[0]];
-
-	}else if(data->keycode[0] <= 0x1d && data->modifier.capslock){
-		return tblAsciiWithShift[data->keycode[0]];
-
-	}else{
-		return tblAscii[data->keycode[0]];
-	}
+    if(data->modifier.left_shift || data->modifier.right_shift){
+        return tblAsciiWithShift[data->keycode[0]];
+    }else if(data->keycode[0] <= 0x1d && data->modifier.capslock){
+        return tblAsciiWithShift[data->keycode[0]];
+    }else{
+        return tblAscii[data->keycode[0]];
+    }
 }

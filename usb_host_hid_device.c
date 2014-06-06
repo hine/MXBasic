@@ -14,12 +14,11 @@
 #include <stdlib.h>
 #include "GenericTypeDefs.h"
 #include "HardwareProfile.h"
-//#include "uart2.h"
 #include "character.h"
 #include "usb_config.h"
 #include "usb.h"
-#include "usb_host_hid_parser.h"
 #include "usb_host_hid.h"
+#include "usb_host_hid_parser.h"
 #include "usb_host_hid_device.h"
 
 //#define	DEBUG_MODE
